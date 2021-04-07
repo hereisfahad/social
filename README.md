@@ -10,6 +10,6 @@ After cloning project:
 
 ```bash
 yarn install
-# or
+# then
 yarn run dev
 ```
