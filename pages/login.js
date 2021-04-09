@@ -6,7 +6,7 @@ function login() {
             <div className="w-full max-w-md px-8 py-6 space-y-8 bg-white border border-purple-200 rounded shadow lg:shadow-md">
                 <div>
                     <h2 className="mt-6 text-3xl font-extrabold text-center text-gray-900">
-                        Sign in
+                        Sign In
                 </h2>
                 </div>
                 <form className="mt-8 space-y-6" action="#" method="POST">
@@ -41,7 +41,7 @@ function login() {
 
                     <div>
                         <button type="submit" className="relative flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-purple-600 border border-transparent rounded-md group hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">
-                            Sign in
+                            Login
                         </button>
                         <Link href="/register">
                             <a className="inline-block mt-2 font-medium text-purple-600">
