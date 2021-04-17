@@ -36,6 +36,7 @@ function login() {
                             <input
                                 className={`relative block w-full px-3 py-2 text-gray-900 placeholder-gray-500 border ${errors?.email ? 'border-red-300' : 'border-gray-300'} rounded appearance-none focus:outline-none focus:ring-purple-500 focus:border-purple-500 focus:z-10 sm:text-sm`}
                                 id="email-address"
+                                name="email-address"
                                 type="email"
                                 {...register('email', { required: true })}
                                 autoComplete="email"
@@ -47,6 +48,7 @@ function login() {
                             <input
                                 className={`relative block w-full px-3 py-2 text-gray-900 placeholder-gray-500 border ${errors?.password ? 'border-red-300' : 'border-gray-300'} rounded appearance-none focus:outline-none focus:ring-purple-500 focus:border-purple-500 focus:z-10 sm:text-sm`}
                                 id="password"
+                                name="password"
                                 type="password"
                                 autoComplete="current-password"
                                 {...register('password', { required: true })}
