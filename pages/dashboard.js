@@ -15,15 +15,22 @@ export default function Dashboard({ profile }) {
   )
 }
 
-export async function getServerSideProps({ req }) {
-  const { data } = await axios({
-    method: 'get',
-    url: '/profile/me',
-    headers: {
-      cookie: req.headers.cookie
+export async function getServerSideProps({ req, res }) {
+  try {
+    const { data } = await axios({
+      method: 'get',
+      url: '/profile/me',
+      headers: {
+        cookie: req.headers.cookie
+      }
+    })
+    return {
+      props: { profile: data }
     }
-  })
-  return {
-    props: { profile: data }
+  } catch (error) {
+    res.setHeader("location", "/login");
+    res.statusCode = 302;
+    res.end();
+    return { props: {} }
   }
 }

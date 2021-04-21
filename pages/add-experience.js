@@ -29,15 +29,15 @@ export default function AddExperience() {
 
     const onSubmit = async ({ duration, ...formData }, e) => {
         const experienceData = { ...formData, from: startDate, to: endDate }
-        const { data } = await axios.post('/profile/experience', experienceData)
-        if (data?.errors) {
-            removeAllToasts()
-            addToast(data.errors[0].msg, { appearance: 'error', autoDismiss: true })
-        } else {
+        try {
+            await axios.post('/profile/experience', experienceData)
             removeAllToasts()
             addToast('Experience added', { appearance: 'success', autoDismiss: true })
             setState([intialDateState])
             reset()
+        } catch (error) {
+            removeAllToasts()
+            addToast(error.response.data, { appearance: 'error', autoDismiss: true })
         }
     }
 
