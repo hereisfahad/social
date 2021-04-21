@@ -1,6 +1,7 @@
 import Link from 'next/link'
+import { formatDistanceStrict } from 'date-fns'
 
-function ExperienceTable() {
+function ExperienceTable({ experience }) {
     return (
         <div className="max-w-screen-md py-4 pr-10 overflow-x-auto bg-white border border-gray-300 rounded shadow shadow-dashboard justify-evenly sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
             <div className="flex items-baseline justify-between py-4">
@@ -23,17 +24,21 @@ function ExperienceTable() {
                         </tr>
                     </thead>
                     <tbody className="">
-                        <tr>
-                            <td className="px-6 py-4 text-sm leading-5 text-blue-900 whitespace-no-wrap border-b-2 border-gray-100">Smock Tech</td>
-                            <td className="px-6 py-4 text-sm leading-5 text-blue-900 whitespace-no-wrap border-b-2 border-gray-100">Dev</td>
-                            <td className="px-6 py-4 text-sm leading-5 text-blue-900 whitespace-no-wrap border-b-2 border-gray-100">2 years</td>
-                            <td className="px-6 py-4 text-sm leading-5 text-right whitespace-no-wrap border-b-2 border-gray-100">
-                                <button className="px-5 py-2 text-blue-500 transition duration-300 border border-blue-500 rounded hover:bg-blue-700 hover:text-white focus:outline-none focus-within:ring ring-blue-600">View</button>
-                            </td>
-                            <td className="px-6 py-4 text-sm leading-5 text-right whitespace-no-wrap border-b-2 border-gray-100">
-                                <button className="px-5 py-2 text-red-500 transition duration-300 border border-red-500 rounded hover:bg-red-700 hover:text-white focus:outline-none focus-within:ring ring-red-600">Delete</button>
-                            </td>
-                        </tr>
+                        {
+                            experience && experience.map(({ _id, company, title, from, to }) => (
+                                <tr key={_id}>
+                                    <td className="px-6 py-4 text-sm leading-5 text-blue-900 whitespace-no-wrap border-b-2 border-gray-100">{company}</td>
+                                    <td className="px-6 py-4 text-sm leading-5 text-blue-900 whitespace-no-wrap border-b-2 border-gray-100">{title}</td>
+                                    <td className="px-6 py-4 text-sm leading-5 text-blue-900 whitespace-no-wrap border-b-2 border-gray-100">{formatDistanceStrict(new Date(from), new Date(to))}</td>
+                                    <td className="px-6 py-4 text-sm leading-5 text-right whitespace-no-wrap border-b-2 border-gray-100">
+                                        <button className="px-5 py-2 text-blue-500 transition duration-300 border border-blue-500 rounded hover:bg-blue-700 hover:text-white focus:outline-none focus-within:ring ring-blue-600">View</button>
+                                    </td>
+                                    <td className="px-6 py-4 text-sm leading-5 text-right whitespace-no-wrap border-b-2 border-gray-100">
+                                        <button className="px-5 py-2 text-red-500 transition duration-300 border border-red-500 rounded hover:bg-red-700 hover:text-white focus:outline-none focus-within:ring ring-red-600">Delete</button>
+                                    </td>
+                                </tr>
+                            ))
+                        }
                     </tbody>
                 </table>
             </div>

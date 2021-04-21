@@ -17,6 +17,7 @@ function Navbar() {
         <div className="flex flex-col items-center px-6 py-4 text-white bg-purple-500 sm:flex-row sm:justify-between">
             <NavLink href="/" className="mb-3 sm:mb-0">DevConnector</NavLink>
             <ul className="flex space-x-4">
+                {user?._id && <li><NavLink href="/dashboard">Dashboard</NavLink></li>}
                 <li><NavLink href="/profiles">Developers</NavLink></li>
                 {!user?._id && <li><NavLink href="/register">Register</NavLink></li>}
                 {
