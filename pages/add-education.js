@@ -59,7 +59,7 @@ export default function AddExperience() {
                     <div className="space-y-2 rounded-md shadow-sm">
                         <div className="relative">
                             <input
-                                className={`block cursor-pointer w-full px-3 py-2 ${getDurationLabel() === 'Select time period' ? 'text-gray-500' : 'text-gray-900'} border ${errors?.duration && getDurationLabel() === 'Select time period' ? 'border-red-300' : 'border-gray-300'} rounded focus:outline-none focus:ring-purple-500 focus:border-purple-500 focus:z-10 sm:text-sm`}
+                                className={`block text-center cursor-pointer w-full px-3 py-2 ${getDurationLabel() === 'Select time period' ? 'text-gray-500' : 'text-gray-900'} border ${errors?.duration && getDurationLabel() === 'Select time period' ? 'border-red-300' : 'border-gray-300'} rounded focus:outline-none focus:ring-purple-500 focus:border-purple-500 focus:z-10 sm:text-sm`}
                                 type="text"
                                 name="duration"
                                 {...register('duration', { validate: () => getDurationLabel() !== 'Select time period' })}
