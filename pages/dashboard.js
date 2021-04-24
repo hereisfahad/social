@@ -31,6 +31,6 @@ export async function getServerSideProps({ req, res }) {
     res.setHeader("location", "/login");
     res.statusCode = 302;
     res.end();
-    return { props: {} }
   }
+  return { props: {} }
 }
