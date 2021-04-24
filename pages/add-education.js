@@ -129,18 +129,6 @@ export default function AddExperience() {
                                 placeholder="Program Description"
                             />
                         </div>
-                        <div className="flex items-center">
-                            <input
-                                className="w-4 h-4 text-purple-600 border-gray-300 rounded cursor-pointer focus:ring-purple-500"
-                                id="current"
-                                name="current"
-                                type="checkbox"
-                                {...register('current')}
-                            />
-                            <label htmlFor="current" className="block ml-2 text-xs text-gray-900 cursor-pointer select-none sm:text-sm">
-                                Current Job
-                            </label>
-                        </div>
                     </div>
 
                     <div>
