@@ -28,9 +28,11 @@ export async function getServerSideProps({ req, res }) {
       props: { profile: data }
     }
   } catch (error) {
-    res.setHeader("location", "/login");
-    res.statusCode = 302;
-    res.end();
+    return {
+      redirect: {
+        permanent: false,
+        destination: '/login'
+      }
+    }
   }
-  return { props: {} }
 }

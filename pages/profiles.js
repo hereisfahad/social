@@ -9,11 +9,9 @@ function profiles({ profiles }) {
         Browse and connect with Developers
       </p>
       <div className="grid grid-cols-1 gap-6 mt-8">
-          {
-            profiles.map(profile => (
-                <ProfileCard key={profile._id} {...profile} />
-            ))
-          }
+        {profiles.map((profile) => (
+          <ProfileCard key={profile._id} {...profile} />
+        ))}
       </div>
     </div>
   );
@@ -34,9 +32,11 @@ export async function getServerSideProps({ req, res }) {
       props: { profiles: data },
     };
   } catch (error) {
-    res.setHeader("location", "/login");
-    res.statusCode = 302;
-    res.end();
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/login",
+      },
+    };
   }
 }
-
