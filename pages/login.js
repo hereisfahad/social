@@ -5,7 +5,7 @@ import { useToasts } from 'react-toast-notifications'
 
 import { useAuth } from '@/lib/auth'
 
-function login() {
+function Login() {
     const router = useRouter()
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { addToast, removeAllToasts } = useToasts()
@@ -90,4 +90,4 @@ function login() {
     )
 }
 
-export default login
+export default Login

@@ -1,20 +1,8 @@
 import Image from "next/image";
-import Link from "next/link";
 
-function PostCard(props) {
-  const {
-    avatar,
-    name,
-    text,
-    _id,
-    likes,
-    comments,
-    createdAt,
-    isCreator,
-    isLikedByMe,
-    handleDeletePost,
-    toggleLikePost,
-  } = props;
+function CommentCard(props) {
+  const { avatar, name, text, _id, createdAt, isCreator, handleDeleteComment } =
+    props;
 
   return (
     <div className="flex flex-col items-center justify-center max-w-lg px-6 py-6 space-y-2 bg-gray-100 border border-gray-200 rounded w-94 sm:px-8 sm:space-x-6 sm:justify-start sm:flex-row">
@@ -36,26 +24,9 @@ function PostCard(props) {
         <div className="flex flex-wrap items-center justify-center">
           {new Date(createdAt).toDateString()}
         </div>
-        <button
-          onClick={() => toggleLikePost(_id)}
-          className={`relative flex justify-center w-full px-4 py-2 text-sm font-medium text-white ${
-            isLikedByMe ? "bg-green-600" : "bg-blue-600"
-          } border border-transparent rounded-md group ${
-            isLikedByMe ? "hover:bg-green-700" : "hover:bg-blue-700"
-          } focus:outline-none focus:ring-2 focus:ring-offset-2 ${
-            isLikedByMe ? "focus:ring-green-500" : "focus:ring-blue-500"
-          }`}
-        >
-          Like {`${likes.length > 0 ? `(${likes.length})` : ""} `}
-        </button>
-        <Link href={`/post/${_id}`}>
-          <a className="px-3 py-2 text-sm font-semibold tracking-wider text-white uppercase bg-purple-500 rounded hover:bg-purple-400 focus:outline-none focus-within:ring-2 ring-purple-600">
-            Discussion {`${comments.length > 0 ? `(${comments.length})` : ""} `}
-          </a>
-        </Link>
         {isCreator && (
           <button
-            onClick={() => handleDeletePost(_id)}
+            onClick={() => handleDeleteComment(_id)}
             className="relative flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-red-600 border border-transparent rounded-md group hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
           >
             Delete
@@ -66,4 +37,4 @@ function PostCard(props) {
   );
 }
 
-export default PostCard;
+export default CommentCard;
