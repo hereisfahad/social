@@ -124,7 +124,7 @@ export async function getServerSideProps({ req, res, params }) {
   try {
     const { data } = await axios({
       method: "get",
-      url: `/profile/user/${params.userId}`,
+      url: `${process.env.NEXT_API_URL}/profile/user/${params.userId}`,
       headers: {
         cookie: req.headers.cookie,
       },

@@ -1,11 +1,13 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { formatDistanceStrict } from 'date-fns'
+import { useToasts } from 'react-toast-notifications'
 
 import axios from "@/lib/axios"
 
 function ExperienceTable({ experience }) {
     const [experienceDetail, setExperienceDetail] = useState(() => experience || [])
+    const { addToast, removeAllToasts } = useToasts()
 
     const deleteExperience = async (experienceId) => {
         const deleteEntry = window.confirm('Are you sure you wanna delete this entry?')

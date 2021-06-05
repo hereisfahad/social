@@ -23,7 +23,7 @@ export async function getServerSideProps({ req, res }) {
   try {
     const { data } = await axios({
       method: "get",
-      url: "/profile/all",
+      url: `${process.env.NEXT_API_URL}/profile/all`,
       headers: {
         cookie: req.headers.cookie,
       },

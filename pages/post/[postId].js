@@ -138,7 +138,7 @@ export async function getServerSideProps({ req, res, params }) {
   try {
     const { data } = await axios({
       method: "get",
-      url: `/posts/${params.postId}`,
+      url: `${process.env.NEXT_API_URL}/posts/${params.postId}`,
       headers: {
         cookie: req.headers.cookie,
       },
