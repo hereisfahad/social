@@ -1,5 +1,6 @@
 import axios from "@/lib/axios";
 import ProfileCard from "@/components/ProfileCard";
+import absoluteUrl from 'next-absolute-url'
 
 function profiles({ profiles }) {
   return (
@@ -21,9 +22,10 @@ export default profiles;
 
 export async function getServerSideProps({ req, res }) {
   try {
+    const { origin } = absoluteUrl(req)
     const { data } = await axios({
       method: "get",
-      url: `${process.env.NEXT_API_URL}/profile/all`,
+      url: `${origin}/api/profile/all`,
       headers: {
         cookie: req.headers.cookie,
       },

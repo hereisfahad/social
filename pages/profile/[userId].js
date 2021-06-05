@@ -1,11 +1,10 @@
 import axios from "@/lib/axios";
 import Image from "next/image";
+import absoluteUrl from 'next-absolute-url'
 
 import Tag from "@/components/Tag";
 
 export default function ProfileDetail({ profile, repos }) {
-  console.log(profile);
-  console.log(repos);
   const { user, skills, experience, education } = profile;
   return (
     <div className="flex flex-col items-center justify-center flex-1 p-4 space-y-8 bg-gray-50 sm:px-6 lg:px-8">
@@ -122,9 +121,10 @@ export default function ProfileDetail({ profile, repos }) {
 
 export async function getServerSideProps({ req, res, params }) {
   try {
+    const { origin } = absoluteUrl(req)
     const { data } = await axios({
       method: "get",
-      url: `${process.env.NEXT_API_URL}/profile/user/${params.userId}`,
+      url: `${origin}/api/profile/user/${params.userId}`,
       headers: {
         cookie: req.headers.cookie,
       },

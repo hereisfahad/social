@@ -40,7 +40,6 @@ export default async function helloAPI(req, res) {
           res.json({ profile });
           return resolve();
         } catch (error) {
-          console.log(error);
           if (error.kind === "ObjectId")
             return res
               .status(404)

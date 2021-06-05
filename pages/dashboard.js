@@ -1,5 +1,6 @@
 import axios from "@/lib/axios";
 import NextLink from "next/link";
+import absoluteUrl from 'next-absolute-url'
 
 import EducationTable from "@/components/EducationTable";
 import ExperienceTable from "@/components/ExperienceTable";
@@ -24,9 +25,10 @@ export default function Dashboard({ profile }) {
 
 export async function getServerSideProps({ req }) {
   try {
+    const { origin } = absoluteUrl(req)
     const { data } = await axios({
       method: "get",
-      url: `${process.env.NEXT_API_URL}/profile/me`,
+      url: `${origin}/api/profile/me`,
       headers: {
         cookie: req.headers.cookie,
       },
