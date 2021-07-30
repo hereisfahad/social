@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { useToasts } from "react-toast-notifications";
 import { useAuth } from "@/lib/auth";
 import { useRouter } from "next/router";
+import absoluteUrl from 'next-absolute-url'
 
 function PostDetail(props) {
   const { user } = useAuth();
@@ -136,9 +137,10 @@ export default PostDetail;
 
 export async function getServerSideProps({ req, res, params }) {
   try {
+    const { origin } = absoluteUrl(req)
     const { data } = await axios({
       method: "get",
-      url: `${process.env.NEXT_API_URL}/posts/${params.postId}`,
+      url: `${origin}/api/posts/${params.postId}`,
       headers: {
         cookie: req.headers.cookie,
       },

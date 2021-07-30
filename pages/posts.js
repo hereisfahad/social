@@ -4,6 +4,7 @@ import PostCard from "@/components/PostCard";
 import { useForm } from "react-hook-form";
 import { useToasts } from "react-toast-notifications";
 import { useAuth } from "@/lib/auth";
+import absoluteUrl from 'next-absolute-url'
 
 function Posts(props) {
   const { user } = useAuth();
@@ -130,9 +131,10 @@ export default Posts;
 
 export async function getServerSideProps({ req, res }) {
   try {
+    const { origin } = absoluteUrl(req)
     const { data } = await axios({
       method: "get",
-      url: `${process.env.NEXT_API_URL}/posts/`,
+      url: `${origin}/api/posts/`,
       headers: {
         cookie: req.headers.cookie,
       },

@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import axios from "@/lib/axios";
 import { useToasts } from "react-toast-notifications";
+import absoluteUrl from 'next-absolute-url'
 
 function UpdateProfile({ apiProfile }) {
   const {
@@ -229,9 +230,10 @@ export default UpdateProfile;
 
 export async function getServerSideProps({ req, params }) {
   try {
+    const { origin } = absoluteUrl(req)
     const { data } = await axios({
       method: "get",
-      url: `${process.env.NEXT_API_URL}/profile/me`,
+      url: `${origin}/api/profile/me`,
       headers: {
         cookie: req.headers.cookie,
       },
